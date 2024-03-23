@@ -3,7 +3,7 @@
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
 const config = require('../config/config');
-const logger = require('../config/logger');
+// const logger = require('../config/logger');
 
 class EmailHelper {
     async sendEmail(from, to, subject, body, auth = null, attachment = false) {
@@ -31,7 +31,7 @@ class EmailHelper {
             return !!(await client.messages.create(domain, postData));
         } catch (err) {
             console.log(err);
-            logger.error(err);
+            // logger.error(err);
             return false;
         }
     }
@@ -58,7 +58,7 @@ class EmailHelper {
 
             return !!(await client.messages.create(domain, postData));
         } catch (err) {
-            logger.error(err);
+            // logger.error(err);
             return false;
         }
     }

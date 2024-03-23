@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 const UserDao = require('../dao/UserDao');
 const responseHandler = require('../helper/responseHandler');
-const logger = require('../config/logger');
+// const logger = require('../config/logger');
 const { userConstant } = require('../config/constant');
 
 class UserService {
@@ -41,7 +41,7 @@ class UserService {
 
             return responseHandler.returnSuccess(httpStatus.CREATED, message, userData);
         } catch (e) {
-            logger.error(e);
+            // logger.error(e);
             return responseHandler.returnError(httpStatus.BAD_REQUEST, 'Something went wrong!');
         }
     };

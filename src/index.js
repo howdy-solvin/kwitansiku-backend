@@ -1,7 +1,5 @@
 const app = require('./app');
 const config = require('./config/config');
-
-console.log('Hello Node-Express-Mysql with Sequelize Boilerplate!!');
 require('./cronJobs');
 // eslint-disable-next-line import/order
 const http = require('http');

@@ -11,7 +11,7 @@ class ReceiptController {
       const receipts = await this.receiptService.getAllReceipt();
       res.status(receipts.statusCode).send(receipts.response);
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
@@ -22,7 +22,7 @@ class ReceiptController {
       const receipt = await this.receiptService.getReceiptDetail(uuid);
       res.status(receipt.statusCode).send(receipt.response);
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
@@ -36,7 +36,7 @@ class ReceiptController {
       );
       res.status(newReceipt.statusCode).send(newReceipt.response);
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
@@ -52,7 +52,7 @@ class ReceiptController {
       );
       res.status(updatedReceipt.statusCode).send(updatedReceipt.response);
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
@@ -63,7 +63,7 @@ class ReceiptController {
       const deletedReceipt = await this.receiptService.deleteByUUID(uuid);
       res.status(deletedReceipt.statusCode).send(deletedReceipt.response);
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };

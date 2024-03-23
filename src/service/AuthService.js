@@ -4,7 +4,7 @@ const UserDao = require('../dao/UserDao');
 const TokenDao = require('../dao/TokenDao');
 const { tokenTypes } = require('../config/tokens');
 const responseHandler = require('../helper/responseHandler');
-const logger = require('../config/logger');
+// const logger = require('../config/logger');
 const RedisService = require('./RedisService');
 
 class AuthService {
@@ -43,7 +43,7 @@ class AuthService {
 
             return responseHandler.returnSuccess(statusCode, message, user);
         } catch (e) {
-            logger.error(e);
+            // logger.error(e);
             return responseHandler.returnError(httpStatus.BAD_GATEWAY, 'Something Went Wrong!!');
         }
     };

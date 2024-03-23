@@ -3,7 +3,7 @@ const PatientTKIDao = require("../dao/PatientTkiDao");
 const ReceiptDao = require("../dao/ReceiptDao");
 const { v4: uuidv4 } = require("uuid");
 const { returnSuccess, returnError } = require("../helper/responseHandler");
-const logger = require("../config/logger");
+// const logger = require("../config/logger");
 
 class ReceiptService {
   constructor() {
@@ -20,7 +20,7 @@ class ReceiptService {
         receipt
       );
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat mengambil data kwitansi!"
@@ -44,7 +44,7 @@ class ReceiptService {
         );
       }
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat mengambil data kwitansi!"
@@ -99,7 +99,7 @@ class ReceiptService {
         { receipt: newReceipt, patient: newPatient }
       );
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat membuat data kwitansi!"
@@ -154,7 +154,7 @@ class ReceiptService {
         "Data Kwitansi berhasil diupdate!"
       );
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat mengupdate data kwitansi!"
@@ -175,7 +175,7 @@ class ReceiptService {
       }
       return returnSuccess(httpStatus.OK, "Data kwitansi berhasil dihapus!");
     } catch (e) {
-      logger.error(e);
+      // logger.error(e);
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat menghapus data kwitansi!"
