@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
+
+app.get('/', async (req, res) => {
+    res.status(200).send("It's working!");
+});
 app.use('/api', routes);
 
 app.use((req, res, next) => {
