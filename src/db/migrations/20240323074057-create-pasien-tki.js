@@ -23,6 +23,10 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      no_form: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       negara_tujuan: {
         type: Sequelize.STRING,
       },

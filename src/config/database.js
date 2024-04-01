@@ -1,5 +1,4 @@
 const config = require('./config');
-const mysql2 = require('mysql2');
 
 module.exports = {
     development: {

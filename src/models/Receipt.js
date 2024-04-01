@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   receipt.init(
     {
       uuid: DataTypes.UUID,
+      no_pendaftaran: DataTypes.STRING,
       tanggal: DataTypes.DATE,
       nama_penanggungjawab: DataTypes.STRING,
       nama_sponsor: DataTypes.STRING,

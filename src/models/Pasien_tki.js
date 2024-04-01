@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   pasien_tki.init({
     uuid: DataTypes.UUID,
+    no_form: DataTypes.STRING,
     negara_tujuan: DataTypes.STRING,
     nama_lengkap: DataTypes.STRING,
     usia: DataTypes.INTEGER,

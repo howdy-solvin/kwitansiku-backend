@@ -5,26 +5,28 @@ const ApiError = require("../helper/ApiError");
 class ReceiptValidator {
   async createReceiptTKIValidator(req, res, next) {
     const receiptSchema = Joi.object({
-      tanggal: Joi.date().required(),
-      nama_penanggungjawab: Joi.string().max(100).required(),
-      nama_sponsor: Joi.string().max(100).required(),
+      tanggal: Joi.date().not(null).required(),
+      no_pendaftaran: Joi.string().max(50).not(null).required(),
+      nama_penanggungjawab: Joi.string().max(100).not(null).required(),
+      nama_sponsor: Joi.string().max(100).not(null).required(),
       keterangan: Joi.string().valid(null, "").max(255),
-      total_pembayaran: Joi.number().required(),
+      total_pembayaran: Joi.number().not(null).required(),
     });
 
     const patientItemsSchema = Joi.object({
-      negara_tujuan: Joi.string().max(50).required(),
-      nama_lengkap: Joi.string().max(100).required(),
-      usia: Joi.number(),
+      no_form: Joi.string().max(50).not(null).required(),
+      negara_tujuan: Joi.string().max(50).not(null).required(),
+      nama_lengkap: Joi.string().max(100).not(null).required(),
+      usia: Joi.number().not(null),
       jenis_kelamin: Joi.string().valid(
         ...Object.values({
           L: "L",
           P: "P",
         })
-      ),
-      harga: Joi.number().required(),
+      ).not(null),
+      harga: Joi.number().not(null).required(),
     });
-    const patientSchema = Joi.array().items(patientItemsSchema);
+    const patientSchema = Joi.array().items(patientItemsSchema).not(null).required();
 
     const schema = Joi.object({
       receipt: receiptSchema,

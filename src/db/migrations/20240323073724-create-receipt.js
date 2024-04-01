@@ -14,6 +14,9 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      no_pendaftaran: {
+        type: Sequelize.STRING,
+      },
       tanggal: {
         type: Sequelize.DATE,
       },
