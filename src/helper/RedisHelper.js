@@ -76,8 +76,6 @@ class RedisHelper {
             return false;
         }
     }
-
-
 }
 
 module.exports = RedisHelper;
