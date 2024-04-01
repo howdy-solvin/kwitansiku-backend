@@ -20,6 +20,20 @@ class ReceiptDao extends SuperDao {
       },
     });
   }
+
+  async findByCurrentDate() {
+    return Receipt.findAll({
+      where: {
+        createdAt: {
+          [models.Sequelize.Op.gte]: new Date(new Date().setHours(0o0, 0o0, 0o0)),
+          [models.Sequelize.Op.lte]: new Date(new Date().setHours(23, 59, 59)),
+        },
+      },
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    });
+  }
 }
 
 module.exports = ReceiptDao;

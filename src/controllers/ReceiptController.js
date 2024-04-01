@@ -15,6 +15,16 @@ class ReceiptController {
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
+  
+  getTodayRegistNumber = async (req, res) => {
+    try {
+      const receipts = await this.receiptService.getReceiptByCurrentDate();
+      res.status(receipts.statusCode).send(receipts.response);
+    } catch (e) {
+      // logger.error(e);
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
 
   getOne = async (req, res) => {
     try {

@@ -9,6 +9,7 @@ const receiptValidator = new ReceiptValidator();
 
 router.get("/", auth(), receiptController.getAll);
 router.get("/one/:uuid", auth(), receiptController.getOne);
+router.get("/newest-regist-number", auth(), receiptController.getTodayRegistNumber)
 router.post("/create/tki", auth(), receiptValidator.createReceiptTKIValidator, receiptController.createReceiptTKI);
 router.post("/update/tki/:uuid", auth(), receiptValidator.updateReceiptTKIValidator, receiptController.updateReceiptTKI);
 router.delete("/delete/:uuid", auth(), receiptController.deleteReceipt);

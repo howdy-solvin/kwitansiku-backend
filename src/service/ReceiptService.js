@@ -11,6 +11,30 @@ class ReceiptService {
     this.PatientTKIDao = new PatientTKIDao();
   }
 
+  getReceiptByCurrentDate = async () => {
+    try {
+      const receipt = await this.receiptDao.findByCurrentDate();
+      return returnSuccess(
+        httpStatus.OK,
+        "Data ID terbaru untuk hari ini berhasil diambil!",
+        {
+          today_data_length: receipt.length,
+          new_regist_id: `${String(new Date().getDate()).padStart(2, "0")}-${String(
+            new Date().getMonth() + 1
+          ).padStart(2, "0")}-${String(new Date().getFullYear())}/${String(
+            receipt.length + 1
+          ).padStart(3, "0")}`,
+        }
+      );
+    } catch (e) {
+      // logger.error(e);
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat mengambil data kwitansi!"
+      );
+    }
+  };
+
   getAllReceipt = async () => {
     try {
       const receipt = await this.receiptDao.findAll();
