@@ -65,6 +65,7 @@ class ReceiptValidator {
 
     const patientItemsSchema = Joi.object({
       uuid: Joi.string().uuid().required(),
+      no_form: Joi.string().max(50).not(null).required(),
       negara_tujuan: Joi.string().max(50).required(),
       nama_lengkap: Joi.string().max(100).required(),
       usia: Joi.number(),
@@ -76,7 +77,7 @@ class ReceiptValidator {
       ),
       harga: Joi.number().required(),
     });
-    const patientSchema = Joi.array().items(patientItemsSchema);
+    const patientSchema = Joi.array().items(patientItemsSchema).not(null).required();
 
     const schema = Joi.object({
       receipt: receiptSchema,
