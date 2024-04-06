@@ -19,11 +19,7 @@ class ReceiptService {
         "Data ID terbaru untuk hari ini berhasil diambil!",
         {
           today_data_length: receipt.length,
-          new_regist_id: `${String(new Date().getDate()).padStart(2, "0")}-${String(
-            new Date().getMonth() + 1
-          ).padStart(2, "0")}-${String(new Date().getFullYear())}/${String(
-            receipt.length + 1
-          ).padStart(3, "0")}`,
+          new_regist_id: String(receipt.length + 1).padStart(3, "0"),
         }
       );
     } catch (e) {
