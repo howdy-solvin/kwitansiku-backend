@@ -9,7 +9,7 @@ class ReceiptValidator {
       no_pendaftaran: Joi.string().max(50).not(null).required(),
       nama_penanggungjawab: Joi.string().max(100).not(null).required(),
       nama_sponsor: Joi.string().max(100).not(null).required(),
-      keterangan: Joi.string().valid(null, "").max(255),
+      keterangan: Joi.string().allow(null).allow("").max(255),
       total_pembayaran: Joi.number().not(null).required(),
     });
 
