@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       total_pendaftar: DataTypes.INTEGER,
       total_harga: DataTypes.INTEGER,
       total_pembayaran: DataTypes.INTEGER,
+      print_status: DataTypes.BOOLEAN,
     },
     {
       sequelize,

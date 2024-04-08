@@ -38,6 +38,10 @@ module.exports = {
       total_pembayaran: {
         type: Sequelize.INTEGER,
       },
+      print_status: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
