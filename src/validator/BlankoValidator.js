@@ -9,7 +9,7 @@ class BlankoValidator {
       tanggal_lahir: Joi.date().not(null).required(),
       bn_bt: Joi.string().max(10).not(null).required(),
       tanggal_cetak: Joi.date().not(null).required(),
-      usia: Joi.number().not(null).required(),
+      usia: Joi.number().greater(10).less(100).not(null).required(),
       status: Joi.string()
         .valid("Menikah", "Belum menikah", "Cerai hidup", "Cerai mati")
         .not(null)
@@ -199,7 +199,7 @@ class BlankoValidator {
       pama_status: Joi.boolean().not(null).required(),
       pafil_status: Joi.boolean().not(null).required(),
       ck_status: Joi.boolean().not(null).required(),
-      cxray_status: Joi.boolean().not(null).required(),
+      cxray_report: Joi.string().max(300).not(null).required(),
       sptm_afb_status: Joi.boolean().not(null).required(),
       serum_krtnn: Joi.string().max(300).not(null).required(),
       warna_urin: Joi.string().max(300).not(null).required(),
@@ -224,7 +224,7 @@ class BlankoValidator {
       dsh_status: Joi.boolean().not(null).required(),
       sehat_bekerja_status: Joi.boolean().not(null).required(),
       rekom_status: Joi.boolean().not(null).required(),
-      rekom_alasan: Joi.string().max(300).not(null).required(),
+      rekom_alasan: Joi.string().max(300),
       dokter: Joi.string().max(200).not(null).required(),
       masa_berlaku: Joi.date().not(null).required(),
       sampai_dengan: Joi.date().not(null).required(),
