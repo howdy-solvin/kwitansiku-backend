@@ -14,6 +14,15 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      pasien_id: {
+        type: Sequelize.UUID,
+        references: {
+          model: "pasien_tkis",
+          key: "uuid",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
       tanggal_lahir: {
         type: Sequelize.DATE,
       },
@@ -66,6 +75,9 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      image_content_type: {
+        type: Sequelize.STRING,
       },
       image_blob: {
         type: Sequelize.BLOB,
