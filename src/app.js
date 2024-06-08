@@ -11,15 +11,13 @@ process.env.PWD = process.cwd();
 
 const app = express();
 
-
 app.use(cors());
 app.options("*", cors());
 
 app.use(express.static(`${process.env.PWD}/public`));
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
+app.use(express.json({ limit: "10mb" }));
 
 app.use(passport.initialize());
 passport.use("jwt", jwtStrategy);
