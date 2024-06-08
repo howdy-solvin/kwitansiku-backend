@@ -60,10 +60,10 @@ module.exports = {
       hd_date: {
         type: Sequelize.DATE
       },
-      hpts_status: {
+      hypt_status: {
         type: Sequelize.BOOLEAN
       },
-      hpts_date: {
+      hypt_date: {
         type: Sequelize.DATE
       },
       dbm_status: {
