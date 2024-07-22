@@ -43,6 +43,16 @@ class BlankoController {
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
+
+  checkBlankoPra = async (req, res) => {
+    try {
+      const pasienUUIDs = req.body.pasien_uuid;
+      const checkData = await this.blankoService.checkBlankoPra(pasienUUIDs);
+      res.status(checkData.statusCode).send(checkData.response);
+    } catch (e) {
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
 }
 
 module.exports = BlankoController;

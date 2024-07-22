@@ -224,7 +224,11 @@ class BlankoValidator {
       dsh_status: Joi.boolean().not(null).required(),
       sehat_bekerja_status: Joi.boolean().not(null).required(),
       rekom_status: Joi.boolean().not(null).required(),
-      rekom_alasan: Joi.string().max(300),
+      rekom_alasan: Joi.when('rekom_status', {
+        is: Joi.boolean().valid(true),
+        then: Joi.string(),
+        otherwise: Joi.string().max(300),
+    }),
       dokter: Joi.string().max(200).not(null).required(),
       masa_berlaku: Joi.date().not(null).required(),
       sampai_dengan: Joi.date().not(null).required(),

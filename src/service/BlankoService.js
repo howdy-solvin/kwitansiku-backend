@@ -136,6 +136,37 @@ class BlankoService {
       );
     }
   };
+
+  checkBlankoPra = async (pasienUUIDs) => {
+    try {
+      let createdPasien = [];
+      for (let i = 0; i < pasienUUIDs.length; i++) {
+        let blankoPra = await this.blanko.findAndPopulateOneBlankoPra(
+          pasienUUIDs[i]
+        );
+        if (blankoPra.length > 0) {
+          createdPasien.push(blankoPra[0].pasien_id);
+        }
+      }
+      if (createdPasien.length == 0)
+        return returnError(
+          httpStatus.NOT_FOUND,
+          "Data Blanko Pra tidak ditemukan!"
+        );
+      else {
+        return returnSuccess(
+          httpStatus.OK,
+          "Data Blanko Pra terbaru berhasil diambil!",
+          createdPasien
+        );
+      }
+    } catch (e) {
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat membuat data Blanko Pra!"
+      );
+    }
+  };
 }
 
 module.exports = BlankoService;
