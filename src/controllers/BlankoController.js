@@ -53,6 +53,34 @@ class BlankoController {
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
+
+  updateBlankoPra = async (req, res) => {
+    try {
+      const pasienUUID = req.body.blanko_main.pasien_id;
+      const blankoPraData = req.body.blanko_pra;
+      const blankoData = req.body.blanko_main;
+      const updateData = await this.blankoService.updateBlankoPra(
+        pasienUUID,
+        blankoPraData,
+        blankoData
+      );
+      res.status(updateData.statusCode).send(updateData.response);
+    } catch (e) {
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
+
+  updateBlankoFull = async (req, res) => {
+    try {
+      const blankoFullData = req.body;
+      const blankoFull = await this.blankoService.updateBlankoFull(
+        blankoFullData
+      );
+      res.status(blankoFull.statusCode).send(blankoFull.response);
+    } catch (e) {
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
 }
 
 module.exports = BlankoController;
