@@ -60,10 +60,10 @@ module.exports = {
       hd_date: {
         type: Sequelize.DATE
       },
-      hpts_status: {
+      hypt_status: {
         type: Sequelize.BOOLEAN
       },
-      hpts_date: {
+      hypt_date: {
         type: Sequelize.DATE
       },
       dbm_status: {
@@ -204,10 +204,10 @@ module.exports = {
       tl_jantung: {
         type: Sequelize.STRING
       },
-      sp_status: {
+      sps_status: {
         type: Sequelize.BOOLEAN
       },
-      tl_sp: {
+      tl_sps: {
         type: Sequelize.STRING
       },
       hati_status: {
@@ -219,7 +219,7 @@ module.exports = {
       ginjal_status: {
         type: Sequelize.BOOLEAN
       },
-      tl_sp_status: {
+      pbk_sp_status: {
         type: Sequelize.BOOLEAN
       },
       tl_sp: {

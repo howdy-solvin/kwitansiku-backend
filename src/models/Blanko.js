@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Blanko extends Model {
     /**
@@ -28,27 +26,31 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Blanko.init({
-    uuid: DataTypes.UUID,
-    tanggal_lahir: DataTypes.DATE,
-    bn_bt: DataTypes.STRING,
-    tanggal_cetak: DataTypes.DATE,
-    usia: DataTypes.INTEGER,
-    status: DataTypes.STRING,
-    jenis_kelamin: DataTypes.CHAR,
-    negara: DataTypes.STRING,
-    provinsi: DataTypes.STRING,
-    daerah: DataTypes.STRING,
-    pekerjaan_negara_tujuan: DataTypes.STRING,
-    no_visa: DataTypes.STRING,
-    no_passpor: DataTypes.STRING,
-    masa_berlaku: DataTypes.DATE,
-    sampai_dengan: DataTypes.DATE,
-    status_blanko: DataTypes.ENUM,
-    image_blob: DataTypes.BLOB,
-  }, {
-    sequelize,
-    modelName: 'blanko',
-  });
+  Blanko.init(
+    {
+      uuid: DataTypes.UUID,
+      tanggal_lahir: DataTypes.DATE,
+      bn_bt: DataTypes.STRING,
+      tanggal_cetak: DataTypes.DATE,
+      usia: DataTypes.INTEGER,
+      status: DataTypes.STRING,
+      jenis_kelamin: DataTypes.CHAR,
+      negara: DataTypes.STRING,
+      provinsi: DataTypes.STRING,
+      daerah: DataTypes.STRING,
+      pekerjaan_negara_tujuan: DataTypes.STRING,
+      no_visa: DataTypes.STRING,
+      no_passpor: DataTypes.STRING,
+      masa_berlaku: DataTypes.DATE,
+      sampai_dengan: DataTypes.DATE,
+      status_blanko: DataTypes.ENUM("pra", "full"),
+      image_content_type: DataTypes.STRING,
+      image_blob: DataTypes.BLOB("long"),
+    },
+    {
+      sequelize,
+      modelName: "blanko",
+    }
+  );
   return Blanko;
 };

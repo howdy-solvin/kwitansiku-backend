@@ -10,7 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasOne(models.blanko, {
+        foreignKey: "pasien_id",
+        sourceKey: "uuid",
+      });
+      models.blanko.belongsTo(this, {
+        foreignKey: "pasien_id",
+        sourceKey: "uuid",
+      });
     }
   }
   pasien_tki.init({
