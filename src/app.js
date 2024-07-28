@@ -11,6 +11,18 @@ process.env.PWD = process.cwd();
 
 const app = express();
 
+app.use(
+  cors({
+    origin: [
+      "https://kwitansiku-dev.vercel.app",
+      "https://klinikgora.vercel.app",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 app.options(
   "*",
   cors({
@@ -20,7 +32,8 @@ app.options(
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
-    optionsSuccessStatus: 204,
+    optionsSuccessStatus: 200,
+    credentials: true,
   })
 );
 
