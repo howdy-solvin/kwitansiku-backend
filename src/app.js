@@ -13,7 +13,9 @@ const app = express();
 
 app.use(cors());
 app.options(
-  cors()
+  cors({
+    origin: "*",
+  })
 );
 
 app.use(express.static(`${process.env.PWD}/public`));
