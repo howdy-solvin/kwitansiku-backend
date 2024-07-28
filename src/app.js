@@ -14,7 +14,11 @@ const app = express();
 app.use(cors());
 app.options(
   cors({
-    origin: ["https://kwitansiku-dev.vercel.app", "https://klinikgora.vercel.app"],
+    origin: [
+      "https://kwitansiku-dev.vercel.app",
+      "https://klinikgora.vercel.app",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   })
 );
 
