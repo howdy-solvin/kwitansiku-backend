@@ -13,10 +13,7 @@ const app = express();
 
 app.use(cors());
 app.options(
-  "*",
-  cors({
-    origin: true,
-  })
+  cors()
 );
 
 app.use(express.static(`${process.env.PWD}/public`));
