@@ -15,7 +15,7 @@ app.use(cors());
 app.options(
   "*",
   cors({
-    origin: false,
+    origin: true,
   })
 );
 
