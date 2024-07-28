@@ -19,6 +19,8 @@ app.options(
       "https://klinikgora.vercel.app",
     ],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   })
 );
 
