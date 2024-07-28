@@ -11,7 +11,6 @@ process.env.PWD = process.cwd();
 
 const app = express();
 
-app.use(cors());
 app.options(
   cors({
     origin: [
