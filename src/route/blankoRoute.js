@@ -21,5 +21,17 @@ router.post(
   blankoController.createBlankoFull
 );
 router.post("/check/pra", auth(), blankoController.checkBlankoPra);
+router.put(
+  "/update/pra",
+  auth(),
+  blankoValidator.updateBlankoPraValidator,
+  blankoController.updateBlankoPra
+);
+router.put(
+  "/update/full",
+  auth(),
+  blankoValidator.updateBlankoFullValidator,
+  blankoController.updateBlankoFull
+);
 
 module.exports = router;
