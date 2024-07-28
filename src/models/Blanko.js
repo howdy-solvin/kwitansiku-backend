@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       sampai_dengan: DataTypes.DATE,
       status_blanko: DataTypes.ENUM("pra", "full"),
       image_content_type: DataTypes.STRING,
-      image_blob: DataTypes.BLOB,
+      image_blob: DataTypes.BLOB("long"),
     },
     {
       sequelize,
