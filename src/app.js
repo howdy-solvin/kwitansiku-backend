@@ -12,6 +12,7 @@ process.env.PWD = process.cwd();
 const app = express();
 
 app.options(
+  "*",
   cors({
     origin: [
       "https://kwitansiku-dev.vercel.app",
