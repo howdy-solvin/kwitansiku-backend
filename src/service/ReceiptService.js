@@ -202,6 +202,46 @@ class ReceiptService {
       );
     }
   };
+
+  getAllPasienByLimit = async (limit) => {
+    try {
+      const pasien = await this.PatientTKIDao.findAllByLimit(limit);
+      return returnSuccess(
+        httpStatus.OK,
+        "Data pasien berhasil diambil!",
+        pasien
+      );
+    } catch (e) {
+      // logger.error(e);
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat mengambil data pasien!"
+      );
+    }
+  };
+
+  searchPasienByName = async (name, limit) => {
+    try {
+      const pasien = await this.PatientTKIDao.findAllLimitWhere(name, limit);
+      if (pasien.length == 0) {
+        return returnError(
+          httpStatus.NOT_FOUND,
+          "Data pasien tidak ditemukan!"
+        );
+      }
+      return returnSuccess(
+        httpStatus.OK,
+        "Data pasien berhasil ditemukan!",
+        pasien
+      );
+    } catch (e) {
+      // logger.error(e);
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat mencari data pasien!"
+      );
+    }
+  };
 }
 
 module.exports = ReceiptService;
