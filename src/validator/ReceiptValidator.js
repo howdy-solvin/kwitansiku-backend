@@ -7,9 +7,9 @@ class ReceiptValidator {
     const receiptSchema = Joi.object({
       tanggal: Joi.date().not(null).required(),
       no_pendaftaran: Joi.string().max(50).not(null).required(),
-      nama_penanggungjawab: Joi.string().max(100).not(null).required(),
-      nama_sponsor: Joi.string().max(100).not(null).required(),
-      keterangan: Joi.string().allow(null).allow("").max(255),
+      nama_penanggungjawab: Joi.string().default("Private").allow(null, "").max(100),
+      nama_sponsor: Joi.string().default("Private").allow(null, "").max(100),
+      keterangan: Joi.string().allow(null, "").max(255),
       total_pembayaran: Joi.number().not(null).required(),
     });
 
