@@ -78,12 +78,20 @@ class ReceiptService {
       const totalHarga = patient.reduce((acc, item) => {
         return acc + item.harga;
       }, 0);
-      console.log("INI HARGANYA - ", totalHarga);
       const newReceipt = await this.receiptDao.create({
+        ...receipt,
         uuid: uuidReceipt,
         total_harga: totalHarga,
         total_pendaftar: patient.length,
-        ...receipt,
+        nama_penanggungjawab:
+          receipt.nama_penanggungjawab !== null &&
+          receipt.nama_penanggungjawab !== ""
+            ? receipt.nama_penanggungjawab
+            : "Private",
+        nama_sponsor: receipt.nama_sponsor !== null &&
+        receipt.nama_sponsor !== ""
+          ? receipt.nama_sponsor
+          : "Private",
       });
 
       const updatedPatientUUID = patient.map((item) => {
