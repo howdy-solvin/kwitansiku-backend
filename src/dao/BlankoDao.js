@@ -11,7 +11,7 @@ class BlankoDao extends SuperDao {
 
   async findAndPopulateOneBlankoPra(pasien_id) {
     return Blanko.findAll({
-      where: { pasien_id },
+      where: { pasien_id: pasien_id },
       include: [
         {
           model: models.blanko_pra,

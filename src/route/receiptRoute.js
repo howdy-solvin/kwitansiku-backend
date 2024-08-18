@@ -8,6 +8,8 @@ const receiptController = new ReceiptController();
 const receiptValidator = new ReceiptValidator();
 
 router.get("/", auth(), receiptController.getAll);
+router.get("/all-pasien", auth(), receiptController.getAllPasien);
+router.get("/search-pasien", auth(), receiptController.searchPasienByName);
 router.get("/one/:uuid", auth(), receiptController.getOne);
 router.get("/newest-regist-number", auth(), receiptController.getTodayRegistNumber)
 router.post("/create/tki", auth(), receiptValidator.createReceiptTKIValidator, receiptController.createReceiptTKI);

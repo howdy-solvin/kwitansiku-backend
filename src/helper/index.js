@@ -25,7 +25,7 @@ class mainHelper {
     return buffer;
   };
 
-  bufferToBase64 = (buffer) => buffer.toString('base64');
+  bufferToBase64 = (buffer, imageType) => `data:${imageType};base64,${buffer.toString('base64')}`;
 
   isEmpty(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
