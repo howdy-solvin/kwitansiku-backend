@@ -80,7 +80,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       image_blob: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB("long"),
       },
     });
   },
