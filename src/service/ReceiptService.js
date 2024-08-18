@@ -78,12 +78,20 @@ class ReceiptService {
       const totalHarga = patient.reduce((acc, item) => {
         return acc + item.harga;
       }, 0);
-      console.log("INI HARGANYA - ", totalHarga);
       const newReceipt = await this.receiptDao.create({
+        ...receipt,
         uuid: uuidReceipt,
         total_harga: totalHarga,
         total_pendaftar: patient.length,
-        ...receipt,
+        nama_penanggungjawab:
+          receipt.nama_penanggungjawab !== null &&
+          receipt.nama_penanggungjawab !== ""
+            ? receipt.nama_penanggungjawab
+            : "Private",
+        nama_sponsor: receipt.nama_sponsor !== null &&
+        receipt.nama_sponsor !== ""
+          ? receipt.nama_sponsor
+          : "Private",
       });
 
       const updatedPatientUUID = patient.map((item) => {
@@ -199,6 +207,46 @@ class ReceiptService {
       return returnError(
         httpStatus.INTERNAL_SERVER_ERROR,
         e.message || "Terjadi kesalahan saat menghapus data kwitansi!"
+      );
+    }
+  };
+
+  getAllPasienByLimit = async (limit) => {
+    try {
+      const pasien = await this.PatientTKIDao.findAllByLimit(limit);
+      return returnSuccess(
+        httpStatus.OK,
+        "Data pasien berhasil diambil!",
+        pasien
+      );
+    } catch (e) {
+      // logger.error(e);
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat mengambil data pasien!"
+      );
+    }
+  };
+
+  searchPasienByName = async (name, limit) => {
+    try {
+      const pasien = await this.PatientTKIDao.findAllLimitWhere(name, limit);
+      if (pasien.length == 0) {
+        return returnError(
+          httpStatus.NOT_FOUND,
+          "Data pasien tidak ditemukan!"
+        );
+      }
+      return returnSuccess(
+        httpStatus.OK,
+        "Data pasien berhasil ditemukan!",
+        pasien
+      );
+    } catch (e) {
+      // logger.error(e);
+      return returnError(
+        httpStatus.INTERNAL_SERVER_ERROR,
+        e.message || "Terjadi kesalahan saat mencari data pasien!"
       );
     }
   };

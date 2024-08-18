@@ -11,11 +11,31 @@ process.env.PWD = process.cwd();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://kwitansiku-dev.vercel.app",
+      "https://klinikgora.vercel.app",
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 app.options(
   "*",
   cors({
-    origin: false,
+    origin: [
+      "https://kwitansiku-dev.vercel.app",
+      "https://klinikgora.vercel.app",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+    credentials: true,
   })
 );
 

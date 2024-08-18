@@ -70,12 +70,24 @@ class BlankoService {
         default:
           blankoFull = await this.blanko.findAndPopulateOneBlankoFull(uuid);
           blankoPra = await this.blanko.findAndPopulateOneBlankoPra(uuid);
+          let newBlankoPra;
+          if (blankoPra.length !== 0) {
+            const imageType = blankoPra[0].dataValues.image_content_type;
+            newBlankoPra = Object.fromEntries(
+              Object.entries(blankoPra[0].dataValues).map(([key, value]) => [
+                key,
+                value instanceof Buffer
+                  ? this.mainHelper.bufferToBase64(value, imageType)
+                  : value,
+              ])
+            );
+          }
           return returnSuccess(
             httpStatus.OK,
             "Data Blanko terbaru berhasil diambil!",
-            {
-              blanko_full: blankoFull[0],
-              blanko_pra: blankoPra[0],
+            { 
+              ...newBlankoPra,
+              blanko_full: blankoFull[0].blanko_full,
             }
           );
       }

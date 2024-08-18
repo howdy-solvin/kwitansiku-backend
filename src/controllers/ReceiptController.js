@@ -15,7 +15,7 @@ class ReceiptController {
       res.status(httpStatus.BAD_GATEWAY).send(e);
     }
   };
-  
+
   getTodayRegistNumber = async (req, res) => {
     try {
       const receipts = await this.receiptService.getReceiptByCurrentDate();
@@ -72,6 +72,27 @@ class ReceiptController {
       const { uuid } = req.params;
       const deletedReceipt = await this.receiptService.deleteByUUID(uuid);
       res.status(deletedReceipt.statusCode).send(deletedReceipt.response);
+    } catch (e) {
+      // logger.error(e);
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
+
+  getAllPasien = async (req, res) => {
+    try {
+      const pasien = await this.receiptService.getAllPasienByLimit(15);
+      res.status(pasien.statusCode).send(pasien.response);
+    } catch (e) {
+      // logger.error(e);
+      res.status(httpStatus.BAD_GATEWAY).send(e);
+    }
+  };
+
+  searchPasienByName = async (req, res) => {
+    try {
+      const { q } = req.query;
+      const pasien = await this.receiptService.searchPasienByName(q, 15);
+      res.status(pasien.statusCode).send(pasien.response);
     } catch (e) {
       // logger.error(e);
       res.status(httpStatus.BAD_GATEWAY).send(e);
