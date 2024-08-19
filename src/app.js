@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://api.klinikgora.com"],
+    origin: ["https://admin.klinikgora.com"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
     optionsSuccessStatus: 200,
@@ -23,7 +23,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: ["https://api.klinikgora.com"],
+    origin: ["https://admin.klinikgora.com"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
     optionsSuccessStatus: 200,
