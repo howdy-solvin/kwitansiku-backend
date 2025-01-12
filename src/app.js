@@ -13,20 +13,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://admin.klinikgora.com"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+    origin: ["https://admin.klinikgora.id", "http://admin.klinikgora.id"],
     preflightContinue: false,
-    optionsSuccessStatus: 200,
-    credentials: true,
-  })
-);
-app.options(
-  "*",
-  cors({
-    origin: ["https://admin.klinikgora.com"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
+    optionsSuccessStatus: 204,
     credentials: true,
   })
 );
