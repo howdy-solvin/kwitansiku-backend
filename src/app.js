@@ -13,12 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://kwitansiku-dev.vercel.app",
-      "https://klinikgora.vercel.app",
-      "http://localhost:5173",
-      "http://127.0.0.1:5173",
-    ],
+    origin: ["https://admin.klinikgora.com"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
     optionsSuccessStatus: 200,
@@ -28,10 +23,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: [
-      "https://kwitansiku-dev.vercel.app",
-      "https://klinikgora.vercel.app",
-    ],
+    origin: ["https://admin.klinikgora.com"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     preflightContinue: false,
     optionsSuccessStatus: 200,
