@@ -1,8 +1,8 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const Joi = require('joi');
+const dotenv = require("dotenv");
+const path = require("path");
+const Joi = require("joi");
 
-dotenv.config({ path: path.join(__dirname, '../../.env') });
+dotenv.config({ path: path.join(__dirname, "../../.env") });
 
 const envValidation = Joi.object()
     .keys({
@@ -37,11 +37,11 @@ const envValidation = Joi.object()
     .unknown();
 
 const { value: envVar, error } = envValidation
-    .prefs({ errors: { label: 'key' } })
-    .validate(process.env);
+  .prefs({ errors: { label: "key" } })
+  .validate(process.env);
 
 if (error) {
-    throw new Error(`Config validation error: ${error.message}`);
+  throw new Error(`Config validation error: ${error.message}`);
 }
 
 module.exports = {
