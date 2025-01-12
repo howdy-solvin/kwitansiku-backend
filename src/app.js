@@ -13,7 +13,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://admin.klinikgora.id", "http://admin.klinikgora.id"],
+    origin: [
+      "https://admin.klinikgora.id",
+      "http://admin.klinikgora.id",
+      "http://localhost",
+      "http://127.0.0.1"
+    ],
     preflightContinue: false,
     optionsSuccessStatus: 204,
     credentials: true,
